@@ -1,0 +1,187 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://univ.fr/cv24" targetNamespace="http://univ.fr/cv24" elementFormDefault="qualified">
+        <!--   0  -->
+<xs:element name="cv24">
+    <xs:complexType>
+        <xs:all>
+            <xs:element ref="identite" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="objectif" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="prof" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="competences" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="divers" minOccurs="0" maxOccurs="1"/>
+        </xs:all>
+    </xs:complexType>
+</xs:element>
+        <!--  éléments de la Structure du cv  -->
+<xs:element name="identite" type="identiteType"/>
+<xs:element name="objectif" type="objectifType"/>
+<xs:element name="competences" type="competencesType"/>
+<xs:element name="prof" type="profType"/>
+<xs:element name="divers" type="diversType"/>
+        <!--  éléments de la structure d'identite  -->
+<xs:complexType name="identiteType">
+<xs:annotation>
+    <xs:documentation>Description</xs:documentation>
+</xs:annotation>
+<xs:sequence>
+    <xs:element ref="Genre" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="nom" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="prenom" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="tel" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="mel" minOccurs="0" maxOccurs="1"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Genre" type="genreType"/>
+<xs:element name="nom" type="String32Maj"/>
+<xs:element name="prenom" type="String32"/>
+<xs:element name="tel" type="telephoneType"/>
+<xs:element name="mel" type="emailType"/>
+<xs:simpleType name="genreType">
+<xs:restriction base="xs:string">
+    <xs:enumeration value="M."/>
+    <xs:enumeration value="Mme"/>
+    <xs:enumeration value="Mrs"/>
+    <xs:enumeration value="Miss"/>
+    <xs:enumeration value="Mr"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="String32Maj">
+<xs:restriction base="xs:string">
+    <xs:maxLength value="32"/>
+    <xs:pattern value="[A-Z]*"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="String32">
+<xs:restriction base="xs:string">
+    <xs:maxLength value="32"/>
+    <xs:pattern value="[a-zA-ZÀ-ÿ '-]*"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="telephoneType">
+<xs:restriction base="xs:string">
+    <xs:pattern value="\d{10}"/>
+    <xs:pattern value="\d{2} \d{2} \d{2} \d{2} \d{2}"/>
+    <xs:pattern value="\d{1} \d{3} \d{3} \d{3}"/>
+    <xs:pattern value="\+33 \d{1,2} \d{2} \d{2} \d{2} \d{2} \d{2}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="emailType">
+<xs:restriction base="xs:string">
+    <xs:pattern value="[a-zA-ZÀ-ÿ0-9._-]+@[a-zA-ZÀ-ÿ0-9.-]+\.[a-zA-ZÀ-ÿ]{2,3}"/>
+</xs:restriction>
+</xs:simpleType>
+        <!--   structure identite  -->
+        <!--  structure objectif  -->
+<xs:complexType name="objectifType">
+<xs:simpleContent>
+    <xs:extension base="String128">
+        <xs:attribute name="status" type="statusType" use="required"/>
+    </xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:simpleType name="String128">
+<xs:restriction base="xs:string">
+    <xs:maxLength value="128"/>
+    <xs:pattern value="[a-zA-ZÀ-ÿ0-9 ,:;~@()\-'~&amp;#\?!$*=_\.\-]+"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="statusType">
+<xs:restriction base="xs:string">
+    <xs:enumeration value="stage"/>
+    <xs:enumeration value="emploi"/>
+</xs:restriction>
+</xs:simpleType>
+        <!--  structure prof  -->
+<xs:complexType name="profType">
+<xs:sequence>
+    <xs:element ref="detail" minOccurs="1" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="detail" type="detailType"/>
+<xs:element name="datedeb" type="datetype"/>
+<xs:element name="datefin" type="datetype"/>
+<xs:element name="titre" type="String128"/>
+<xs:complexType name="detailType">
+<xs:sequence>
+    <xs:element ref="datedeb" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="datefin" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="titre" minOccurs="1" maxOccurs="1"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="datetype">
+<xs:restriction base="xs:date">
+    <xs:pattern value="\d{4}-\d{2}-\d{2}"/>
+</xs:restriction>
+</xs:simpleType>
+        <!--  structure de competences  -->
+<xs:complexType name="competencesType">
+<xs:sequence>
+    <xs:element name="diplome" type="diplomeType" minOccurs="1" maxOccurs="5"/>
+    <xs:element name="certif" type="certifType" minOccurs="1" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+        <!--  structure du diplôme  -->
+<xs:complexType name="diplomeType">
+<xs:sequence>
+    <xs:element name="date" type="datetype" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="institut" type="String32" minOccurs="0" maxOccurs="1"/>
+</xs:sequence>
+<xs:attribute name="niveau" type="Niveau" use="required"/>
+</xs:complexType>
+<xs:simpleType name="Niveau">
+<xs:restriction base="xs:int">
+    <xs:minInclusive value="1"/>
+    <xs:maxInclusive value="8"/>
+</xs:restriction>
+</xs:simpleType>
+        <!--  structure du certificat  -->
+<xs:complexType name="certifType">
+<xs:sequence>
+    <xs:element ref="datedeb" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="datefin" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="titre" type="String32" minOccurs="1" maxOccurs="1"/>
+</xs:sequence>
+</xs:complexType>
+        <!--  structure divers  -->
+<xs:complexType name="diversType">
+<xs:sequence>
+    <xs:element name="lv" type="lvType" minOccurs="1" maxOccurs="5"/>
+    <xs:element name="autre" type="autreType" minOccurs="0" maxOccurs="3"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="ISO69">
+<xs:restriction base="xs:string">
+    <xs:pattern value="[a-z]{2}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="certtype">
+<xs:restriction base="xs:string">
+    <!--  enumeration identique a pattern  -->
+    <xs:enumeration value="MAT"/>
+    <xs:enumeration value="CLES"/>
+    <xs:enumeration value="TOEIC"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="nivstype">
+<xs:restriction base="xs:string">
+    <xs:pattern value="A1|A2|B1|B2|C1|C2"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="nivitype">
+<xs:restriction base="xs:int">
+    <xs:minInclusive value="10"/>
+    <xs:maxInclusive value="990"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="lvType">
+<xs:attribute name="lang" type="ISO69" use="required"/>
+<xs:attribute name="cert" type="certtype" use="required"/>
+<xs:attribute name="nivs" type="nivstype" use="optional"/>
+<xs:attribute name="nivi" type="nivitype" use="optional"/>
+<!-- <xs:assert test="(if (@lang='MAT') then not(@nivs) else true())"/> c'est pas supporté dans la version 1.0 d'XML
+   faudra passer a une version 1.2 d'XML au minimum -->
+</xs:complexType>
+<xs:complexType name="autreType">
+<xs:attribute name="titre" type="String32" use="required"/>
+<xs:attribute name="comment" type="String128" use="optional"/>
+</xs:complexType>
+        </xs:schema>

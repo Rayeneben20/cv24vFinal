@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Liste des Opérations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+        .table thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .container {
+            max-width: 90%;
+        }
+        .table td, .table th {
+            padding: 1rem;
+            vertical-align: middle;
+            min-height: 40px; /* Ajouter une hauteur minimale */
+            line-height: 1.5; /* Ajuster la hauteur de ligne */
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navbar :: .navbar"></div>
+<div class="container">
+    <h1 class="my-4">Liste des Opérations</h1>
+    <div class="table-container table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>URL</th>
+                <th>Méthode</th>
+                <th>Résumé</th>
+                <th>Reçoit</th>
+                <th>Retourne</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>/</td>
+                <td>GET</td>
+                <td>Affiche la page d'accueil</td>
+                <td>-</td>
+                <td>text/html</td>
+            </tr>
+            <tr>
+                <td>/help</td>
+                <td>GET</td>
+                <td>Affiche la page d'aide</td>
+                <td>-</td>
+                <td>text/html</td>
+            </tr>
+            <tr>
+                <td>/cv24.xsd</td>
+                <td>GET</td>
+                <td>Télécharge le fichier XSD cv24</td>
+                <td>-</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/resume/xml</td>
+                <td>GET</td>
+                <td>Retourne le résumé de tous les CVs en format XML</td>
+                <td>-</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/resume/html</td>
+                <td>GET</td>
+                <td>Retourne le résumé de tous les CVs en format HTML</td>
+                <td>-</td>
+                <td>text/html</td>
+            </tr>
+            <tr>
+                <td>/cv24/insert</td>
+                <td>POST</td>
+                <td>Insère un nouveau CV valide dans la base de données</td>
+                <td>application/xml</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/delete</td>
+                <td>DELETE</td>
+                <td>Supprime le CV avec l'identifiant spécifié dans le corps de la requête</td>
+                <td>text/plain</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/search?date=&lsaquo;date&rsaquo;&objectif=&lsaquo;objectif&rsaquo;</td>
+                <td>GET</td>
+                <td>
+                    Retourne le résumé de tous les CVs en format XML répondant aux critères :
+                    <ul>
+                        <li>dates égales ou postérieures à &lsaquo;date> (RFC3339 YYYY-MM-DD)</li>
+                        <li>et au moins une correspondance de l'objectif dans la liste de mots de &lsaquo;objectif&rsaquo;</li>
+                    </ul>
+                    (au moins un paramètre est requis, ordre des paramètres non pertinent)
+                </td>
+                <td>-</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/xml?id=&lsaquo;id&rsaquo;</td>
+                <td>GET</td>
+                <td>Retourne le CV avec l'identifiant spécifié en format XML</td>
+                <td>-</td>
+                <td>application/xml</td>
+            </tr>
+            <tr>
+                <td>/cv24/html?id=&lsaquo;id&rsaquo;</td>
+                <td>GET</td>
+                <td>Retourne le CV avec l'identifiant spécifié en format HTML</td>
+                <td>-</td>
+                <td>text/html</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

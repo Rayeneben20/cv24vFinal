@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des CVs</title>
+</head>
+<body>
+<h1>Liste des CVs</h1>
+<div th:each="cv : ${cvs}">
+    <h2>CV n° <span th:text="${cv.id}"></span></h2>
+    <div>
+        <h3>Identité</h3>
+        <p>Genre : <span th:text="${cv.genre}"></span></p>
+        <p>Nom : <span th:text="${cv.nom}"></span></p>
+        <p>Prénom : <span th:text="${cv.prenom}"></span></p>
+    </div>
+    <div>
+        <h3>Objectif</h3>
+        <p th:text="${cv.objectif}"></p>
+    </div>
+    <div>
+        <h3>Diplôme</h3>
+        <p th:text="${cv.diplome}"></p>
+    </div>
+    <hr>
+</div>
+</body>
+</html>

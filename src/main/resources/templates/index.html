@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CV24 Management System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 90%;
+            margin-top: 50px;
+        }
+        .university-logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .team-member {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navbar :: .navbar"></div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/images/logo_universite.png" alt="Logo de l'Université de Rouen" class="university-logo img-fluid">
+        </div>
+        <div class="col-md-6">
+            <img src="/images/logo_ST.png" alt="Another Logo" class="university-logo img-fluid">
+        </div>
+    </div>
+    <h1 class="my-4">CV24 Management System</h1>
+    <p class="lead">Version: 1.0.0</p>
+    <h2 class="my-4">Équipe</h2>
+    <div class="team-member">
+        <p><strong>Nom:</strong> BENMANSOUR</p>
+        <p><strong>Prénom:</strong> Rayene</p>
+    </div>
+    <div class="team-member">
+        <p><strong>Nom:</strong> OUDIA</p>
+        <p><strong>Prénom:</strong> Abdelwaheb</p>
+    </div>
+    <!-- Ajoutez plus de membres de l'équipe ici -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
