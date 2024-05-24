@@ -119,7 +119,7 @@ public class Cv24Service {
                             LocalDate localDate = LocalDate.parse(xmlDate);
                             return localDate;
                         }))
-                .map(d -> "Niveau " + d.getNiveau() + " - " + d.getDate()+"-"+d.getTitre())
+                .map(d -> "Niveau " + d.getNiveau() + " - " + d.getDate())
                 .orElse("Aucun diplôme");
 
         return new CvSummary(id, genre, prenom, nom, objectif, diplome);
