@@ -21,25 +21,19 @@
                 <title>Liste des CVs</title>
             </head>
             <body>
-                <nav class="navbar navbar-expand-lg navbar-custom">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/cv24/resume">CV</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/help">Aide</a>
-                            </li>
-                        </ul>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="/">Accueil</a>
+                        <a class="nav-item nav-link active" href="/cv24/resume">CV</a>
+                        <a class="nav-item nav-link" href="/help">Aide</a>
                     </div>
-                </nav>
+                </div>
+            </nav>
 
                 <div class="container container-custom mt-4">
                     <h1>Liste des CVs</h1>
@@ -62,7 +56,7 @@
                                     <td><xsl:value-of select="prenom"/></td>
                                     <td><xsl:value-of select="nom"/></td>
                                     <td><xsl:value-of select="objectif"/></td>
-                                    <td><xsl:value-of select="diplome"/><a href="/cv24/html?id={id}" class="button">Voir Détailes</a></td>
+                                    <td><xsl:value-of select="diplome"/><a href="/cv24/html?id={id}" class="button">Voir Détails</a></td>
 
                                 </tr>
                             </xsl:for-each>

@@ -16,24 +16,17 @@ import java.io.StringReader;
 public class XmlValidator {
 
     public static void validateXml(String xml) throws SAXException, IOException {
-        // Chemin du fichier XSD
         String xsdPath = "cv24.xsd";
-
-        // Charger le fichier XSD
         try (InputStream xsdStream = XmlValidator.class.getClassLoader().getResourceAsStream(xsdPath)) {
             if (xsdStream == null) {
                 throw new IOException("Le fichier XSD ne peut pas être trouvé : " + xsdPath);
             }
-
-            // Configuration du schéma pour la validation
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = schemaFactory.newSchema(new StreamSource(xsdStream));
 
-            // Création du validateur
             Validator validator = schema.newValidator();
             validator.setErrorHandler(new ValidationErrorHandler());
 
-            // Validation du fichier XML
             validator.validate(new StreamSource(new StringReader(xml)));
 
             System.out.println("La validation du fichier XML a réussi.");

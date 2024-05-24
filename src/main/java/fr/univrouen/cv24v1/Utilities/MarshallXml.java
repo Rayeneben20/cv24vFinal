@@ -23,8 +23,6 @@ public class MarshallXml {
             JAXBContext context = JAXBContext.newInstance(Cv24.class);
             StringWriter writer = new StringWriter();
             context.createMarshaller().marshal(cv, writer);
-            // Print XML for debugging
-            System.out.println("Generated XML: " + writer.toString());
             return writer.toString();
         } catch (JAXBException e) {
             throw new RuntimeException("Error converting CV to XML", e);
@@ -40,7 +38,6 @@ public class MarshallXml {
             StreamSource text = new StreamSource(new StringReader(xml));
             StringWriter writer = new StringWriter();
             transformer.transform(text, new StreamResult(writer));
-            System.out.println(writer);
             return writer.toString();
         } catch (TransformerException e) {
             throw new RuntimeException("Error transforming XML to HTML", e);
@@ -53,8 +50,6 @@ public class MarshallXml {
             CvSummaryWrapper wrapper = new CvSummaryWrapper(summaries);
             StringWriter writer = new StringWriter();
             context.createMarshaller().marshal(wrapper, writer);
-            // Print XML for debugging
-            System.out.println("Generated XML: " + writer.toString());
             return writer.toString();
         } catch (JAXBException e) {
             throw new RuntimeException("Error converting CV summaries to XML", e);

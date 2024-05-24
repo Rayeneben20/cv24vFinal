@@ -54,23 +54,22 @@ public class XmlProjectApplicationTests {
             Cv24 cv = (Cv24) jaxbUnmarshaller.unmarshal(source);
             cv.getIdentite().setNom("AMARA");
 
-            // Create a SchemaFactory and specify XML Schema language
+
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            // Load the XSD file
+
             Schema schema = schemaFactory.newSchema(new File(xsdFilePath));
-            // Create a validator
+
             Validator validator = schema.newValidator();
 
-            // Create temporary XML file
             File tempFile = new File(xmlTempPath);
-            // Marshal the cv object to the temporary XML file
+
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(cv, tempFile);
-            // Validate the temporary XML file against the XSD
+
             validator.validate(new StreamSource(tempFile));
 
-            // If validation passes, marshal the cv object to the output XML file
+
             marshaller.marshal(cv, output);
             System.out.println("Marshalled XML successfully.");
         } catch (JAXBException | IOException | SAXException e) {
@@ -88,34 +87,4 @@ public class XmlProjectApplicationTests {
         }
     }
 
-    @Test
-    public void testXMLtoJSON() {/*
-        File source = new File(xmlOutputFilePath);
-        JsonMapper jsonMapper = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).build();
-        JAXBContext jaxbContext;
-        File output = new File("src/main/resources/XML/output1.xml");
-
-        try {
-            jaxbContext = JAXBContext.newInstance(Cv24.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Cv24 cv = (Cv24) jaxbUnmarshaller.unmarshal(source);
-            String jsonString = jsonMapper.writeValueAsString(cv);
-            System.out.println("JSON representation:");
-            System.out.println(jsonString);
-            jsonMapper.writeValue(new File("src/main/resources/XML/output.json"), cv);
-            Cv24 cv24 = jsonMapper.readValue(new File("src/main/resources/XML/output.json"), Cv24.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            StringWriter stringWriter = new StringWriter();
-            marshaller.marshal(cv24,stringWriter);
-            marshaller.marshal(cv24,output);
-            String xmlString = stringWriter.toString();
-            XmlUtilities validator = XmlUtilities.getInstance();
-            System.out.println(validator.validateSchema(xmlString));
-        } catch (JAXBException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-    }
 }

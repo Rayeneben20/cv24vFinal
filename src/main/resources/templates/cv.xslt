@@ -11,26 +11,22 @@
                 <!-- Navbar -->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/cv24/resume">CV</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/help">Aide</a>
-                            </li>
-                        </ul>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="/">Accueil</a>
+                            <a class="nav-item nav-link active" href="/cv24/resume">CV</a>
+                            <a class="nav-item nav-link" href="/help">Aide</a>
+                        </div>
                     </div>
                 </nav>
+                <div class="pad">
+                    <h1>CV24 - XSLT V1.0</h1>
+                    <xsl:apply-templates select="cv24:cv24"/>
+                </div>
 
-                <h1>CV24 - XSLT V1.0</h1>
-                <xsl:apply-templates select="cv24:cv24"/>
 
                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
