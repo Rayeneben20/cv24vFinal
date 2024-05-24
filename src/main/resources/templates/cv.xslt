@@ -92,7 +92,7 @@
                 <xsl:sort select="@niveau" order="descending"/>
                 <tr>
                     <td><xsl:call-template name="format-date"><xsl:with-param name="date" select="cv24:date"/></xsl:call-template></td>
-                    <td><xsl:value-of select="cv24:titre"/></td>
+                    <td><xsl:value-of select="cv24:titrediplome"/></td>
                     <td><xsl:value-of select="@niveau"/></td>
                     <td><xsl:value-of select="cv24:institut"/></td>
                 </tr>

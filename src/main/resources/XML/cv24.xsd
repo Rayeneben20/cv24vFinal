@@ -122,7 +122,7 @@
         <!--  structure du diplôme  -->
 <xs:complexType name="diplomeType">
 <xs:sequence>
-    <xs:element name="titre" type="String128" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="titrediplome" type="String128" minOccurs="1" maxOccurs="1"/>
     <xs:element name="date" type="datetype" minOccurs="1" maxOccurs="1"/>
     <xs:element name="institut" type="String32" minOccurs="1" maxOccurs="1"/>
 </xs:sequence>
