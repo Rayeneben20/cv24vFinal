@@ -1,6 +1,5 @@
 <configuration>
 
-    <!-- Console Appender with Color -->
     <appender name="COLORED_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
@@ -10,11 +9,10 @@
         </encoder>
     </appender>
 
-    <!-- File Appender -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/app.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- Roll logs every day -->
+            <!-- Roulez les journaux tous les jours -->
             <fileNamePattern>logs/app.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -23,13 +21,11 @@
         </encoder>
     </appender>
 
-    <!-- Root Logger -->
     <root level="info">
         <appender-ref ref="COLORED_CONSOLE" />
         <appender-ref ref="FILE" />
     </root>
 
-    <!-- Specific Logger Configuration -->
     <logger name="fr.univrouen.cv24v1" level="debug" additivity="false">
         <appender-ref ref="COLORED_CONSOLE" />
         <appender-ref ref="FILE" />

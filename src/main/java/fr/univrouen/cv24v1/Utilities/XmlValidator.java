@@ -1,5 +1,8 @@
 package fr.univrouen.cv24v1.Utilities;
 
+import fr.univrouen.cv24v1.Services.Cv24Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.SAXParseException;
@@ -14,6 +17,7 @@ import java.io.InputStream;
 import java.io.StringReader;
 
 public class XmlValidator {
+    private static final Logger logger = LoggerFactory.getLogger(Cv24Service.class);
 
     public static void validateXml(String xml) throws SAXException, IOException {
         String xsdPath = "cv24.xsd";
@@ -29,12 +33,12 @@ public class XmlValidator {
 
             validator.validate(new StreamSource(new StringReader(xml)));
 
-            System.out.println("La validation du fichier XML a réussi.");
+            logger.info("La validation du fichier XML a réussi.");
         } catch (SAXException e) {
-            System.err.println("Erreur SAX lors de la validation du fichier XML : " + e.getMessage());
+            logger.info("Erreur SAX lors de la validation du fichier XML : " + e.getMessage());
             throw e;
         } catch (IOException e) {
-            System.err.println("Erreur d'entrée/sortie lors de la validation du fichier XML : " + e.getMessage());
+            logger.info("Erreur d'entrée/sortie lors de la validation du fichier XML : " + e.getMessage());
             throw e;
         }
     }
