@@ -48,6 +48,8 @@ public class DiplomeType {
 
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
+    protected String titre;
+
     protected String date;
     protected String institut;
     @XmlAttribute(name = "niveau", required = true)
@@ -59,6 +61,12 @@ public class DiplomeType {
      * @return possible object is
      * {@link String }
      */
+
+    public String getTitre(){return titre;}
+
+    public void setTitre(String value){
+        this.titre=value;
+    }
     public String getDate() {
         return date;
     }
