@@ -8,7 +8,9 @@
   <cv24:objectif status="stage">objectif</cv24:objectif>
   <cv24:competences>
     <cv24:diplome niveau="2">
+      <cv24:titre>Test</cv24:titre>
       <cv24:date>2001-01-01</cv24:date>
+      <cv24:institut>Univrsité de rouen</cv24:institut>
     </cv24:diplome>
     <cv24:certif>
       <cv24:datedeb>2001-01-01</cv24:datedeb>
