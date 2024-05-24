@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "302752d3-e9c5-463b-b469-b41a51226d4e",
+		"name": "jcv24_BENMANSOUR_OUDIA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31521717"
+	},
+	"item": [
+		{
+			"name": "Search cv using date or objective (or both)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cv24:cv24 xmlns:cv24=\"http://univ.fr/cv24\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://univ.fr/cv24 cv24.xsd \">\n  <cv24:identite>\n    <cv24:Genre>M.</cv24:Genre>\n    <cv24:nom>BBBBBB</cv24:nom>\n    <cv24:prenom>eazeazeeaze</cv24:prenom>\n    <cv24:tel>0123456789</cv24:tel>\n  </cv24:identite>\n  <cv24:objectif status=\"stage\">objectif</cv24:objectif>\n  <cv24:competences>\n    <cv24:diplome niveau=\"5\">\n      <cv24:date>2001-01-01</cv24:date>\n    </cv24:diplome>\n    <cv24:diplome niveau=\"7\">\n      <cv24:date>2002-01-01</cv24:date>\n    </cv24:diplome>\n    <cv24:certif>\n      <cv24:datedeb>2001-01-01</cv24:datedeb>\n      <cv24:datefin>2004-06-10</cv24:datefin>\n      <cv24:titre>titre</cv24:titre>\n    </cv24:certif>\n  </cv24:competences>\n</cv24:cv24>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cv24/search?date=2001-01-01&objectif=stage",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"search"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2001-01-01"
+						},
+						{
+							"key": "objectif",
+							"value": "stage"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert cv (as Xml)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cv24:cv24 xmlns:cv24=\"http://univ.fr/cv24\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://univ.fr/cv24 cv24.xsd \">\n  <cv24:identite>\n    <cv24:Genre>M.</cv24:Genre>\n    <cv24:nom>NOM</cv24:nom>\n    <cv24:prenom>amara</cv24:prenom>\n    <cv24:tel>0123456789</cv24:tel>  \n  </cv24:identite>\n  <cv24:objectif status=\"stage\">objectif</cv24:objectif>\n  <cv24:competences>\n    <cv24:diplome niveau=\"2\">\n      <cv24:titrediplome>test</cv24:titrediplome>\n      <cv24:date>2001-01-01</cv24:date>\n      <cv24:institut>nnknn</cv24:institut>\n    </cv24:diplome>\n    <cv24:certif>\n      <cv24:datedeb>2001-01-01</cv24:datedeb>\n      <cv24:titre>titre</cv24:titre>\n    </cv24:certif>\n  </cv24:competences>\n</cv24:cv24>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cv24/insert",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete cv using id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cv24/delete?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Help Page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/help",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"help"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display cvs (XML format)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cv24/resume/xml",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"resume",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display cvs (HTML format)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cv24/resume",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"resume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display specific cv (using ID in html format)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cv24/html?id=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"html"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display specific cv (using ID in XMl format)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cv24/xml?id=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cv24",
+						"xml"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://benmansourouadiacv24.cleverapps.io",
+			"type": "string"
+		}
+	]
+}
