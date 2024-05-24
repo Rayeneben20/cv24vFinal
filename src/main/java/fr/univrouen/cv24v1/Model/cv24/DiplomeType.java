@@ -40,8 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "diplomeType", propOrder = {
-    "date",
+@XmlType(name = "diplomeType", propOrder = {"titre","date",
     "institut"
 })
 public class DiplomeType {
